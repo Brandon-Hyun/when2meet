@@ -1,5 +1,10 @@
 import random
+from enum import Enum
 
+
+class GenderEnum(str, Enum):
+    male = "male"
+    female = "female"
 
 class UserModel:
 	_data = []  # 전체 사용자 데이터를 저장하는 리스트
