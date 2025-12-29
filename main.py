@@ -1,6 +1,16 @@
-def main():
-    print("Hello from when2meet!")
+from typing import Annotated
+from fastapi import FastAPI
+from app.models.users import UserModel
 
+app = FastAPI()
 
-if __name__ == "__main__":
-    main()
+UserModel.create_dummy() # API 테스트를 위한 더미를 생성하는 메서드 입니다.
+	
+if __name__ == '__main__':
+	import uvicorn
+	
+	uvicorn.run(app, host='0.0.0.0', port=8000)
+
+# dict, set, list, tuple -> collection
+# int, str, bool 같은 자료형의 자료를 담기위한 collection
+

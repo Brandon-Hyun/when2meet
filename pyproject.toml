@@ -1,11 +1,20 @@
 [project]
+<<<<<<< HEAD
 name = "when2meet"
+=======
+name = "whentomeet"
+>>>>>>> 55f1008 (폴더경로 뒤집어 엎음)
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "black==24.10.0",
+<<<<<<< HEAD
+=======
+    "fastapi>=0.128.0",
+    "pydantic>=2.12.5",
+>>>>>>> 55f1008 (폴더경로 뒤집어 엎음)
 ]
 
 [tool.black]
@@ -13,8 +22,26 @@ line-length = 110
 
 [dependency-groups]
 dev = [
+<<<<<<< HEAD
+=======
+    "mypy==1.13.0",
+>>>>>>> 55f1008 (폴더경로 뒤집어 엎음)
     "ruff==0.8.2",
 ]
 
 [tool.ruff]
+<<<<<<< HEAD
 target-version = 'py313'
+=======
+target-version = 'py313'
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+python-version = 'py313'
+strict = true
+
+[tool.uv.workspace]
+members = [
+    "whentomeet",
+]
+>>>>>>> 55f1008 (폴더경로 뒤집어 엎음)
