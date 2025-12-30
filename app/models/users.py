@@ -16,6 +16,7 @@ class UserModel:
         UserModel._data.append(self)
         UserModel._id_counter += 1
 
+
     @classmethod
     def create(cls, username, age, gender):
         """새로운 유저 추가"""
