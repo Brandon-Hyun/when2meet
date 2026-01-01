@@ -1,5 +1,9 @@
 from pydantic import BaseModel
 
+class MovieSearchParams(BaseModel):
+	title: str | None = None
+	genre: str | None = None
+
 class MovieCreate(BaseModel):
     title: str
     playtime: int
