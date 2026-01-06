@@ -1,3 +1,9 @@
+- name: Install dependencies
+  run: poetry install
+- name: Run black
+  run: poetry run black . --check
+
+
 name: CI
 
 on:
