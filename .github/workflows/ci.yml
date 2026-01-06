@@ -7,11 +7,6 @@ jobs:
   static-analysis: # mypy, black, ruff 등 정적 분석
     runs-on: ubuntu-22.04   # 실제 프로덕션에서는 모든 버전을 고정하는 것이 좋다.
     steps:
-      - name: Install Poetry
-        run: pip install poetry
-
-      - name: Install with Poetry
-        run: poetry install
 
       - name: Install with uv
         run: uv pip install .
