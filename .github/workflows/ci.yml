@@ -1,13 +1,3 @@
-- name: Install dependencies
-  run: poetry install
-
-- name: Install Poetry
-  run: pip install poetry
-
-- name: Run black
-  run: poetry run black . --check
-
-
 name: CI
 
 on:
@@ -17,6 +7,12 @@ jobs:
   static-analysis: # mypy, black, ruff 등 정적 분석
     runs-on: ubuntu-22.04   # 실제 프로덕션에서는 모든 버전을 고정하는 것이 좋다.
     steps:
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install
+
       - name: Check out the codes
         uses: actions/checkout@v2
 
@@ -33,8 +29,9 @@ jobs:
       - name: Register Poetry bin
         run: echo "${HOME}/.poetry/bin" >> $GITHUB_PATH
 
-      - name: Run Black
+      - name: Run black
         run: poetry run black . --check
+
 
       - name: Run Ruff
         run: |
