@@ -32,6 +32,9 @@ jobs:
       - name: Register Poetry bin
         run: echo "${HOME}/.poetry/bin" >> $GITHUB_PATH
 
+      - name: Install black manually
+        run: poetry run pip install black
+
       - name: Run black
         run: poetry run black . --check
 
