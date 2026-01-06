@@ -8,9 +8,6 @@ jobs:
     runs-on: ubuntu-22.04   # 실제 프로덕션에서는 모든 버전을 고정하는 것이 좋다.
     steps:
 
-      - name: Install with uv
-        run: uv pip install .
-
       - name: Check out the codes
         uses: actions/checkout@v2
 
