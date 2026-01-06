@@ -10,10 +10,11 @@ jobs:
       - name: Install Poetry
         run: pip install poetry
 
-      - name: Install dependencies
+      - name: Install with Poetry
         run: poetry install
-        working-directory: ./when2meet
 
+      - name: Install with uv
+        run: uv pip install .
 
       - name: Check out the codes
         uses: actions/checkout@v2
