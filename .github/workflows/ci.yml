@@ -1,5 +1,9 @@
 - name: Install dependencies
   run: poetry install
+
+- name: Install Poetry
+  run: pip install poetry
+
 - name: Run black
   run: poetry run black . --check
 
