@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 from enum import Enum
+
+from pydantic import BaseModel
+
 
 # 성별은 male | female // Enumrate 둘 중 하나여야 한다고 정의함.
 class Gender(str, Enum):

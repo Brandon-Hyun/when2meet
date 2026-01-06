@@ -5,9 +5,11 @@ from typing import Any
 
 from passlib.context import CryptContext
 from pwdlib import PasswordHash
+
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 password_hash = PasswordHash.recommended()
+
 
 class UserModel:
     _data = []  # 전체 사용자 데이터를 저장하는 리스트
@@ -27,17 +29,17 @@ class UserModel:
 
     @staticmethod
     def get_hashed_password(password: str) -> str:
-        """ 비밀번호 해시화 """
+        """비밀번호 해시화"""
         return password_hash.hash(password)
 
     @staticmethod
     def verify_password(plain_password: str, hashed_password: str) -> bool:
-        """ 비밀번호 검증 """
+        """비밀번호 검증"""
         return password_hash.verify(plain_password, hashed_password)
 
     @classmethod
     def authenticate(cls, username: str, password: str) -> UserModel | None:
-        """ 사용자 인증 """
+        """사용자 인증"""
         for user in cls._data:
             if user.username == username and cls.verify_password(password, user.password):
                 return user
@@ -59,7 +61,9 @@ class UserModel:
     @classmethod
     def filter(cls, **kwargs: Any) -> list[UserModel]:
         """조건에 맞는 객체 리스트 반환"""
-        return [user for user in cls._data if all(getattr(user, key) == value for key, value in kwargs.items())]
+        return [
+            user for user in cls._data if all(getattr(user, key) == value for key, value in kwargs.items())
+        ]
 
     def update(self, **kwargs: Any) -> None:
         """객체의 필드 업데이트"""
@@ -88,7 +92,12 @@ class UserModel:
     @classmethod
     def create_dummy(cls) -> None:
         for i in range(1, 11):
-            cls(username=f"dummy{i}", password=f"password{i}", age=15 + i, gender=random.choice(["male", "female"]))
+            cls(
+                username=f"dummy{i}",
+                password=f"password{i}",
+                age=15 + i,
+                gender=random.choice(["male", "female"]),
+            )
 
     def __repr__(self) -> str:
         return f"UserModel(id={self.id}, username='{self.username}', age={self.age}, gender='{self.gender}')"

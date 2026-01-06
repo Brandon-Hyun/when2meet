@@ -1,5 +1,4 @@
 import random
-from pydantic import BaseModel
 
 
 class MovieModel:
@@ -16,10 +15,9 @@ class MovieModel:
         MovieModel._data.append(self)
         MovieModel._id_counter += 1
 
-
     @classmethod
     def create(cls, title, playtime, genre):
-        """ 새로운 영화 추가 """
+        """새로운 영화 추가"""
         return cls(title, playtime, genre)
 
     @classmethod
@@ -42,14 +40,18 @@ class MovieModel:
 
     @classmethod
     def filter(cls, **kwargs):
-        """ 조건에 맞는 모든 영화 리스트 반환 """
+        """조건에 맞는 모든 영화 리스트 반환"""
         result = [
-            movie for movie in cls._data if all(getattr(movie, key) == value or value in getattr(movie, key) for key, value in kwargs.items())
+            movie
+            for movie in cls._data
+            if all(
+                getattr(movie, key) == value or value in getattr(movie, key) for key, value in kwargs.items()
+            )
         ]
         return result
 
     def update(self, **kwargs):
-        """ 영화 정보 업데이트 """
+        """영화 정보 업데이트"""
         for key, value in kwargs.items():
             if hasattr(self, key):
                 if value is not None:
@@ -62,20 +64,22 @@ class MovieModel:
 
     @classmethod
     def all(cls):
-        """ 전체 영화 리스트 반환 """
+        """전체 영화 리스트 반환"""
         return cls._data
 
     @classmethod
     def create_dummy(cls):
         for i in range(1, 11):
             cls.create(
-                title=f'dummy_movie {i}',
+                title=f"dummy_movie {i}",
                 playtime=random.randint(100, 300),
-                genre=random.sample(['SF', 'Romantic', 'Adventure', 'Action', 'Comedy', 'Horror'], k=3)
+                genre=random.sample(["SF", "Romantic", "Adventure", "Action", "Comedy", "Horror"], k=3),
             )
 
     def __repr__(self):
-        return f"MovieModel(id={self.id}, title='{self.title}', playtime={self.playtime}, genre='{self.genre}')"
+        return (
+            f"MovieModel(id={self.id}, title='{self.title}', playtime={self.playtime}, genre='{self.genre}')"
+        )
 
     def __str__(self):
         return self.title

@@ -5,15 +5,20 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "aerich==0.8.1",
     "black==24.10.0",
+    "cryptography==44.0.0",
     "fastapi>=0.128.0",
     "orjson==3.10.12",
     "passlib>=1.7.4",
     "pwdlib[argon2]>=0.3.0",
     "pydantic>=2.12.5",
+    "pydantic-settings==2.7.1",
+    "sqids==0.5.1",
     "sqlalchemy>=2.0.45",
+    "tomlkit==0.13.2",
+    "tortoise-orm[asyncmy]==0.23.0",
     "uvicorn>=0.40.0",
-
 ]
 
 [tool.black]
@@ -34,6 +39,33 @@ python-version = 'py313'
 strict = true
 
 [tool.uv.workspace]
-members = [
-    "whentomeet",
-]
+members = ["whentomeet"]
+
+[tool.poetry]
+name = "when2meet"
+version = "0.1.0"
+description = "A FastAPI project for when2meet clone"
+authors = [""]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.6"
+uvicorn = "^0.32.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "24.10.0"
+ruff = "0.8.2"
+mypy = "1.13.0"
+pytest = "8.3.4"
+coverage = "7.6.9"
+pytest-asyncio = "0.25.0"
+
+[tool.coverage.run]
+omit = ["*/test_*.py"]  # 루트 혹은 루트 아래의 파일들 중 test_ 로 시작하는 파일을 제외.
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+
+
+
