@@ -12,6 +12,8 @@ jobs:
 
       - name: Install dependencies
         run: poetry install
+        working-directory: ./when2meet
+
 
       - name: Check out the codes
         uses: actions/checkout@v2
