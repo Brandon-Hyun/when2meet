@@ -23,8 +23,11 @@ jobs:
       - name: Update lock file
         run: poetry lock
 
+      - name: Configure Poetry to use in-project venv
+        run: poetry config virtualenvs.in-project true
+
       - name: Install dependencies
-        run: poetry install --with dev
+        run: poetry install --with=dev
 
       - name: Register Poetry bin
         run: echo "${HOME}/.poetry/bin" >> $GITHUB_PATH
