@@ -1,26 +1,3 @@
-[project]
-name = "whentomeet"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "aerich==0.8.1",
-    "black==24.10.0",
-    "cryptography==44.0.0",
-    "fastapi>=0.128.0",
-    "orjson==3.10.12",
-    "passlib>=1.7.4",
-    "pwdlib[argon2]>=0.3.0",
-    "pydantic>=2.12.5",
-    "pydantic-settings==2.7.1",
-    "sqids==0.5.1",
-    "sqlalchemy>=2.0.45",
-    "tomlkit==0.13.2",
-    "tortoise-orm[asyncmy]==0.23.0",
-    "uvicorn>=0.40.0",
-]
-
 [tool.black]
 line-length = 110 
 
