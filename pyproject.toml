@@ -45,7 +45,7 @@ members = ["whentomeet"]
 name = "when2meet"
 version = "0.1.0"
 description = "A FastAPI project for when2meet clone"
-authors = [""]
+authors = ["현동익"]
 
 [tool.poetry.dependencies]
 python = "^3.12"
